@@ -1,40 +1,266 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css">
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>RegExp</h1>
+                <p>RegExp is a text search and replace tool.</p>
+                <p>Different languages ​​implement the interface differently.</p>
+                <p>Let's look at the implementation in JS.</p>
+            </section>
+            <section>
+                <h3>History</h3>
+                <p>The origins of regular expressions lie in automata theory, formal language theory, and Chomsky's classification of formal grammars.</p>
+                <p>Mathematician Stephen Kleene later described these models using his system of mathematical notation called "regular sets."</p>
+                <p>Ken Thompson built them into the QED editor, and then into the ed editor on UNIX.</p>
+            </section>
+            <section><h3>Use</h3><p>Since then, regular expressions have become widely used in UNIX and UNIX-like utilities, such as expr, awk, Emacs, vi, lex, and Perl. Gradually spread beyond UNIX and now we can use them in our favorite JS!</p></section>
+            <section>
+                <p>In JS the tool allows to use 2 parameters:</p>
+                <ul>
+                    <li>Template</li>
+                    <li>Flags</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h3>Entry point syntax</h3>
+                    <p>The injection point of regular expressions with strings is in the .match(RegExp) method</p>
+                    <p>There is also .matchAll(RegExp)</p>
+                </section>
+                <section>
+                    <h3>Injection syntax allows 2 options</h3>
+                    <p>Dynamic</p>
+                    <pre>
+                    <code data-trim data-noescape>
+                    let str = "Which tag do you want to find?";
+                    re =RegExp("template", "flags");
+                    str.match(re);
+                    </code>
+                    </pre>
+                    <p>Static</p>
+                    <pre>
+                    <code data-trim data-noescape>
+                    str.match(/template/flags);
+                    </code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Answer</h3>
+                    <p>If there are matches, it will return a list </p>
+                    <p>If there are none, it will return null</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Flags</h3>
+                    <p>Flags will affect the search and may contain additional. info</p>
+                    <p>There are only seven of them in JavaScript</p>
+                </section>
+                <section>
+                    <h3>Main flags</h3>
+                    <ul>
+                        <li>i- search is case-insensitive</li>
+                        <li>g- search looks for all subsequent matches</li>
+                        <li>m-Multiline mode (^ $)</li>
+                        <li>s-Enables "dotall" mode, . == \n </li>
+                        <li>u-Enables full Unicode support</li>
+                        <li>y-Search mode at a specific position in the text</li>
+                        <li>d-With this flag, the result of the regular expression is placed in an array. This flag only provides additional information</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <h3>Pattern</h3>
+                <p>Parameter for entering matching conditions</p>
+            </section>
+            <section>
+                <h3>Special characters</h3>
+                <ul>
+                    <li>$& - inserts the entire match found</li>
+                    <li>$` - inserts part of the string before the match</li>
+                    <li>$' - inserts part of the string after the match</li>
+                    <li>$n - inserts the contents of the n-th bracket group of the regular expression</li>
+                    <li>$<name> - inserts the contents of the bracket group named name</li>
+                    <li>$$ - inserts the "$" character</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h3>Class characters</h3>
+                    <p>Character class</p>
+                    <ul>
+                        <li>\d ("d": from English "digital")</li>
+                        <li>\s ("s": from English "space")</li>
+                        <li>\w ("w": from English "word")</li>
+                    </ul>
+                    <p>Exclusive character class</p>
+                    <ul>
+                        <li>\D - all except number</li>
+                        <li>\S - all except space</li>
+                        <li>\W - all except word</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>\p- property</h3>
+                    <p>Allows to use a pre-known list of characters collected according to a certain criterion</p>
+                </section>
+                <section>
+                    <p>Letters</p>
+                    <ul>
+                        <li>L - all</li>
+                        <li>Ll - lowercase</li>
+                        <li>Lm - modifiers</li>
+                        <li>Lt - uppercase</li>
+                        <li>Lu - uppercase</li>
+                        <li>Lo - other</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Numbers</p>
+                    <ul>
+                        <li>Nd - decimal digit</li>
+                        <li>Nl - digits denoted by letters (Roman)</li>
+                        <li>No - other</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Standard abbreviations</p>
+                    <ul>
+                        <li>Hex_Digit</li>
+                        <li>
+                            for different languages
+                            <ul>
+                                <li>\p{sc=Cyrillic} for Cyrillic letters</li>
+                                <li>\p{sc=Han} for Chinese characters</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>State checks</h3>
+                    <p>Checks are needed to determine states within the text</p>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+                    <p>^ - beginning</p>
+                    <pre><code data-trim data-noescape> 
+                    let str1 = "Mary had a little lamb"; 
+                    alert( /^Mary/.test(str1) ); // true 
+                    </code></pre>
+                    <p>$ - end</p>
+                    <pre><code data-trim data-noescape> 
+                    let str1 = "it's fleece was white as snow"; 
+                    alert( /snow$/.test(str1) ); // true 
+                    </code></pre>
+                    <p>\b - word/number boundary</p>
+                    <pre><code data-trim data-noescape> 
+                    alert( "Hello, Java!".match(/\bJava\b/) ); // Java 
+                    alert( "1 23 456 78".match(/\b\d\d\b/g) ); // 23.78 
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Enumeration [] </h3>
+                    <p>
+                        [...] - "search for any character from the given ones"
+                    </p>
+                    <pre><code data-trim data-noescape>
+                    alert( "Top hop".match(/[th]hop/gi) ); // "Top", "hop"
+                    </code></pre>
+                    <p>
+                        [^...] - "search for any character except the given ones"
+                    </p>
+                    <pre><code data-trim data-noescape>
+                    alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ and .
+                    </code></pre>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Quantifiers {}</h3>
+                </section>
+                <section>
+                    <h3>{n} - pattern multiplier</h3>
+                    <pre><code data-trim data-noescape>
+                    \d{5} - denotes exactly 5 digits, it is equivalent to \d\d\d\d\d
+                    \d{3,5} - \d\d\d || \d\d\d\d || \d\d\d\d\d
+                    \d{3,} - \d\d\d - infinity\d
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Abbreviations</h3>
+                    <pre><code data-trim data-noescape>
+                    + <=> {1,}
+                    alert( "+7(903)-123-45-67".match(/\d+/g) ); // 7,903,123,45,67
+
+                    ? <=> {0,1}
+                    alert( "Should I write color or colour?".match(/colou?r/g) );
+
+                    * <=> {0,}
+                    alert( "100 10 1 44".match(/\d0*/g) ); // 100, 10, 1
+                    </code></pre>
+                    <pre><code data-trim data-noescape>
+                    \d <=> [0-9],
+                    \w <=> [a-zA-Z0-9_]
+                    \s <=> [\t\n\v\f\r ]
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Escapes</h3>
+                    <p>'\' is used to escape characters [ ] \ ^ $ . | ? * + ( )</p>
+                    <pre><code data-trim data-noescape>
+                    alert( "Chapter 5.1".match(/\d\.\d/) );
+                    </code></pre>
+                                        <p>Or dinamical</p>
+                    <pre><code data-trim data-noescape>
+                    let regStr = "\\d\\.\\d";
+                    let regexp = new RegExp(regStr);
+                    alert( "Chapter 5.1".match(regexp) );
+                    </code></pre>
+                </section>
+            </section>
+            <section>
+                <h3>Conclusion</h3>
+                <ul>
+                    <li>The tool is widely used!</li>
+                    <li>Allows you to solve a wide range of problems!</li>
+                    <li>Described in detail!</li>
+                </ul>
+            </section>
+            <section>Thank you for your attention!</section>
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
 </html>
